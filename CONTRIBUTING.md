@@ -1,5 +1,7 @@
 # Contributing
 
+[中文](./CONTRIBUTING.zh-CN.md)
+
 iHow Memory v0.1 is an open-standard draft. The most useful contributions at this stage are improvements to terminology, reliability scenarios, protocol boundaries, conformance criteria, and documentation clarity.
 
 ## Good First Contributions
