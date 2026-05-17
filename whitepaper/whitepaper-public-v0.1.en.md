@@ -141,7 +141,7 @@ The `audit` interface explains where memory came from, when it changed, why it w
 
 ## 6. Validation Direction
 
-iHow Memory has been tested internally on long-term memory and multi-agent handoff workflows. The public material records the direction of this validation, including LongMemEval-style retrieval checks and multi-agent continuation tests.
+The public v0.1 material publishes validation direction, not benchmark results. Its public review surface is behavioral: scenarios, protocol semantics, isolation boundaries, and audit expectations. Executable conformance tooling may be considered after the spec boundary is stable.
 
 The most important public principle is behavioral validation:
 
@@ -196,7 +196,7 @@ It intentionally excludes:
 
 ### v0.4 and later
 
-Future releases may consider executable conformance tooling or implementation artifacts, but those decisions should happen separately from the v0.1 standard draft.
+Future releases may consider executable conformance tooling or implementation artifacts, but those decisions should happen separately from the v0.1 spec draft.
 
 ## 9. Closing
 

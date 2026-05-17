@@ -113,7 +113,7 @@ It also defines isolation boundaries for tenant, customer, project, and user sco
 
 ## Validation Direction
 
-iHow Memory has been evaluated internally against long-term memory and handoff reliability tasks, including LongMemEval-style retrieval checks and multi-agent handoff workflows. The public v0.1 repository publishes the reliability language first; future versions may add executable conformance tooling after the standard boundary is stable.
+The public v0.1 repository publishes a reliability language first: reviewable scenarios, protocol semantics, isolation boundaries, and conformance direction. It does not publish benchmark results or executable conformance tooling. Future versions may consider executable checks after the spec boundary is stable.
 
 ## What Is Not Included in v0.1
 
