@@ -1,6 +1,6 @@
 # v0.1 Release Scope
 
-iHow Memory v0.1 is a public open-standard draft.
+iHow Memory v0.1 is a public open spec draft seeking RFC-style review.
 
 ## Included
 

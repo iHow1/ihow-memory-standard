@@ -74,7 +74,7 @@ iHow Memory asks reliability questions:
 
 ## What v0.1 Publishes
 
-v0.1 publishes the standard language first:
+v0.1 publishes the reliability language first:
 
 - the problem definition
 - the protocol draft

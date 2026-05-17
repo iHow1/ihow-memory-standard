@@ -10,3 +10,4 @@
 - Added bilingual README, bilingual non-technical overview, bilingual diagrams, Chinese companion docs, and an English whitepaper.
 - Softened Chinese whitepaper validation claims to match the English public-review posture.
 - Added README badges, audience guidance, comparison tables, and contribution calls to action.
+- Reframed public wording to open spec draft seeking RFC-style review.

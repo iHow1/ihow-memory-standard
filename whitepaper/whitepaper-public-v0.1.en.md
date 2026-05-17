@@ -16,7 +16,7 @@ AI agents are increasingly capable inside a single conversation, but real work r
 
 iHow Memory addresses this failure mode. It defines a local-first memory and handoff reliability layer for multi-agent workflows. The goal is to make project memory durable, scoped, auditable, and reusable across AI tools.
 
-The v0.1 public release is an open-standard draft. It publishes the problem definition, protocol semantics, reliability scenarios, conformance direction, diagrams, and documentation. It does not publish implementation code.
+The v0.1 public release is an open spec draft seeking RFC-style review. It publishes the problem definition, protocol semantics, reliability scenarios, conformance direction, diagrams, and documentation. It does not publish implementation code.
 
 ## 1. The Problem
 
@@ -151,7 +151,7 @@ The most important public principle is behavioral validation:
 - Can it prevent unrelated project leakage?
 - Can it support review, rollback, and deletion?
 
-## 7. Open Standard Invitation
+## 7. Open Spec Draft Invitation
 
 AI memory should not be locked inside one vendor's chat history. The ecosystem needs a shared way to discuss durable, scoped, auditable memory.
 
@@ -202,4 +202,4 @@ Future releases may consider executable conformance tooling or implementation ar
 
 AI work should be continuous.
 
-Users should not have to rebuild project context every time the tool, model, chat window, or teammate changes. iHow Memory starts with a narrow public promise: define the standard language for reliable agent memory before publishing implementation details.
+Users should not have to rebuild project context every time the tool, model, chat window, or teammate changes. iHow Memory starts with a narrow public promise: define a shared reliability language for agent memory before publishing implementation details.

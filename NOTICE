@@ -3,4 +3,4 @@ Copyright 2026 iHow Memory Team
 
 iHow Memory is a project name and brand used for public documentation, protocol drafts, reliability scenarios, conformance specifications, and related materials.
 
-This v0.1 repository intentionally publishes open-standard materials only. It excludes software implementation code, tool integration code, runtime services, private operations, customer-specific materials, and generated benchmark data.
+This v0.1 repository intentionally publishes open spec draft materials only. It excludes software implementation code, tool integration code, runtime services, private operations, customer-specific materials, and generated benchmark data.

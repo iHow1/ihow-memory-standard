@@ -126,4 +126,4 @@ flowchart LR
   end
 ```
 
-The public draft defines the standard first. Implementation details can be considered later, under a separate release and license decision.
+The public draft defines the reliability language first. Implementation details can be considered later, under a separate release and license decision.

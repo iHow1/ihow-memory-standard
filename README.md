@@ -2,11 +2,11 @@
 
 # iHow Memory
 
-### An open standard for durable, auditable memory across AI agents
+### An open spec draft for durable, auditable memory across AI agents
 
 [![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](./LICENSE-SPEC)
 [![Status: Draft v0.1](https://img.shields.io/badge/status-draft%20v0.1-yellow.svg)](./docs/release-scope-v0.1.md)
-[![Standard: Open](https://img.shields.io/badge/standard-open-brightgreen.svg)](./spec/protocol-draft-v0.1.md)
+[![Spec: Draft](https://img.shields.io/badge/spec-draft%20v0.1-brightgreen.svg)](./spec/protocol-draft-v0.1.md)
 [![Feedback: Welcome](https://img.shields.io/badge/feedback-welcome-purple.svg)](https://github.com/iHow1/ihow-memory-standard/issues)
 
 [中文](./README.zh-CN.md) · [Whitepaper](./whitepaper/whitepaper-public-v0.1.en.md) · [Protocol](./spec/protocol-draft-v0.1.md) · [Scenarios](./scenarios/reliability-scenarios-v0.1.md) · [Diagrams](./docs/diagrams.md)
@@ -17,7 +17,9 @@ AI agents are powerful inside one chat. Real work is longer than one chat.
 
 iHow Memory defines a local-first memory and handoff reliability layer so agents, tools, and human operators can share durable project context across sessions, models, and handoffs without relying on hidden chat history.
 
-> v0.1 is an open-standard draft. It intentionally publishes specifications, scenarios, diagrams, and documentation only. No implementation code is included.
+> v0.1 is an open spec draft seeking RFC-style review. It intentionally publishes specifications, scenarios, diagrams, and documentation only. No implementation code is included.
+>
+> v0.1 first published by iHow1, 2026-05.
 
 ## The Problem in One Picture
 
@@ -126,7 +128,7 @@ This repository intentionally does not include:
 - customer-specific materials
 - generated benchmark data
 
-The first public release is deliberately narrow: define the standard before publishing implementation details.
+The first public release is deliberately narrow: define the reliability language before publishing implementation details.
 
 ## License
 
@@ -138,7 +140,7 @@ Future code releases, if any, may use a separate software license. No software l
 
 ## Get Involved
 
-Help shape the standard:
+Help shape the spec draft:
 
 - Open an issue for ambiguous terminology, missing failure modes, or security boundary concerns.
 - Suggest additional reliability scenarios.
