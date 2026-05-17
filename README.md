@@ -4,6 +4,11 @@
 
 ### An open standard for durable, auditable memory across AI agents
 
+[![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](./LICENSE-SPEC)
+[![Status: Draft v0.1](https://img.shields.io/badge/status-draft%20v0.1-yellow.svg)](./docs/release-scope-v0.1.md)
+[![Standard: Open](https://img.shields.io/badge/standard-open-brightgreen.svg)](./spec/protocol-draft-v0.1.md)
+[![Feedback: Welcome](https://img.shields.io/badge/feedback-welcome-purple.svg)](https://github.com/iHow1/ihow-memory-standard/issues)
+
 [中文](./README.zh-CN.md) · [Whitepaper](./whitepaper/whitepaper-public-v0.1.en.md) · [Protocol](./spec/protocol-draft-v0.1.md) · [Scenarios](./scenarios/reliability-scenarios-v0.1.md) · [Diagrams](./docs/diagrams.md)
 
 </div>
@@ -41,6 +46,14 @@ Most AI work fails at the handoff boundary:
 
 iHow Memory treats memory as shared project infrastructure, not a private feature inside one agent.
 
+## Who Is This For?
+
+- Teams using multiple AI coding or writing tools on long-running projects.
+- AI product builders who need memory semantics beyond chat history.
+- Operations, support, and consulting teams that rely on repeatable handoffs.
+- Researchers and analysts who need durable project state across tools.
+- Organizations that need local-first, auditable AI workflow memory.
+
 ## What Makes It Different
 
 - Local-first by default: project memory stays in the operator's chosen environment.
@@ -49,6 +62,15 @@ iHow Memory treats memory as shared project infrastructure, not a private featur
 - Multi-agent native: handoff is a first-class reliability target.
 - Auditable: memory has provenance, scope, review status, and lifecycle records.
 - Conformance-oriented: quality is measured by behavior, not by storage technology.
+
+## Comparison With Other Approaches
+
+| Approach | Primary focus | iHow Memory difference |
+|---|---|---|
+| Chat history | Recall inside one product session | Defines durable project memory across sessions and tools. |
+| Vector database / RAG | Retrieve similar text | Adds scope, review status, hard constraints, writeback, and audit. |
+| Agent memory platforms | Personalization or app-level memory | Focuses on multi-agent handoff reliability and conformance. |
+| Manual project docs | Human-maintained notes | Defines protocol semantics for agents to record, retrieve, and audit memory. |
 
 ## v0.1 Published Materials
 
@@ -110,9 +132,18 @@ The first public release is deliberately narrow: define the standard before publ
 
 - Specification and scenario materials are licensed under CC BY 4.0. See [`LICENSE-SPEC`](./LICENSE-SPEC).
 - Whitepaper and documentation materials are licensed under CC BY 4.0. See [`LICENSE-DOCS`](./LICENSE-DOCS).
-- The iHow Memory name and marks are not licensed for unrestricted brand use. See [`TRADEMARK`](./TRADEMARK).
+- The iHow Memory name and marks are not licensed for unrestricted brand use. See [`TRADEMARK.md`](./TRADEMARK.md).
 
 Future code releases, if any, may use a separate software license. No software license is granted by this v0.1 repository.
+
+## Get Involved
+
+Help shape the standard:
+
+- Open an issue for ambiguous terminology, missing failure modes, or security boundary concerns.
+- Suggest additional reliability scenarios.
+- Review the conformance direction and propose behavior-level checks.
+- Share implementation feedback without publishing private code or customer materials.
 
 ## Status
 
