@@ -1,0 +1,9 @@
+{
+  "name": "ihow-memory-standard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:conformance": "node conformance/runners/run-all.mjs"
+  }
+}

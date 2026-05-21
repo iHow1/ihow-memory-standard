@@ -1,0 +1,58 @@
+{
+  "runtime": "openviking",
+  "label": "Black-box export/import and context preservation probe",
+  "classification": "experimental",
+  "references": [
+    "black-box runner draft; no upstream endorsement implied"
+  ],
+  "policy": {
+    "public_fixture": true,
+    "uses_synthetic_data": true,
+    "no_official_conformance_claim": true
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "title": "Cross-Tool Handoff",
+      "status": "PARTIAL",
+      "checks": [
+        { "name": "handoff export contains completed item", "ok": true },
+        { "name": "handoff export contains open item", "ok": true },
+        { "name": "handoff export contains preserved constraint", "ok": true },
+        { "name": "bounded context selection is explainable", "ok": false }
+      ],
+      "evidence": [
+        "Synthetic export/import package with completed/open/constraint fields"
+      ],
+      "gaps": [
+        "Black-box export can preserve text, but explainable context selection is not verified."
+      ]
+    },
+    {
+      "id": "S5",
+      "title": "Model Migration",
+      "status": "PARTIAL",
+      "checks": [
+        { "name": "exported project summary survives import", "ok": true },
+        { "name": "source reference survives import", "ok": true },
+        { "name": "model-neutral context limits are enforced", "ok": false }
+      ],
+      "evidence": [
+        "Synthetic source-linked handoff package round-tripped through JSON"
+      ],
+      "gaps": [
+        "The draft runner does not yet exercise receiving-model context limits."
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Feedback Pattern Capture",
+      "status": "NOT_APPLICABLE",
+      "checks": [],
+      "evidence": [],
+      "gaps": [
+        "No reviewed writeback API is assumed for the black-box runner."
+      ]
+    }
+  ]
+}

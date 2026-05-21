@@ -13,3 +13,5 @@ It defines what a compatible memory system should be able to demonstrate:
 - audit records can explain why a memory item was included or excluded
 
 Future versions may include executable test tooling, but v0.1 only publishes the behavioral standard.
+
+Experimental runner drafts live under [`runners/`](./runners/) for v0.2 design work. They use synthetic fixtures only and should not be treated as v0.1 certification results.

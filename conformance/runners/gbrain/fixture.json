@@ -1,0 +1,58 @@
+{
+  "runtime": "gbrain",
+  "label": "Markdown restore and human handoff package probe",
+  "classification": "experimental",
+  "references": [
+    "file/Markdown restore runner draft; no upstream endorsement implied"
+  ],
+  "policy": {
+    "public_fixture": true,
+    "uses_synthetic_data": true,
+    "no_official_conformance_claim": true
+  },
+  "scenarios": [
+    {
+      "id": "S4",
+      "title": "Human Team Handoff",
+      "status": "PASS",
+      "checks": [
+        { "name": "handoff package separates facts", "ok": true },
+        { "name": "handoff package separates decisions", "ok": true },
+        { "name": "handoff package separates assumptions", "ok": true },
+        { "name": "handoff package separates blockers", "ok": true },
+        { "name": "handoff package names next steps", "ok": true },
+        { "name": "important claims carry source references", "ok": true }
+      ],
+      "evidence": [
+        "Synthetic Markdown package with facts/decisions/assumptions/blockers/next-steps/source fields"
+      ],
+      "gaps": []
+    },
+    {
+      "id": "S1",
+      "title": "Cross-Tool Handoff",
+      "status": "PARTIAL",
+      "checks": [
+        { "name": "latest Markdown checkpoint can be restored", "ok": true },
+        { "name": "open blocker survives restore", "ok": true },
+        { "name": "automatic minimal context retrieval is verified", "ok": false }
+      ],
+      "evidence": [
+        "Synthetic latest.md restore fixture"
+      ],
+      "gaps": [
+        "File restore is covered; automatic context ranking is not assumed."
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Constraint Preservation",
+      "status": "NOT_APPLICABLE",
+      "checks": [],
+      "evidence": [],
+      "gaps": [
+        "No native block/warn/confirm policy API is assumed for this runner."
+      ]
+    }
+  ]
+}

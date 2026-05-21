@@ -1,0 +1,51 @@
+{
+  "runtime": "openclaw",
+  "label": "OpenClaw-style handoff behavior baseline",
+  "classification": "experimental",
+  "references": [
+    "openclaw/openclaw#84636",
+    "headRefOid:33c20bcda6513382c0196a32aeb956b6bc0ab989"
+  ],
+  "policy": {
+    "public_fixture": true,
+    "uses_synthetic_data": true,
+    "no_official_conformance_claim": true
+  },
+  "scenarios": [
+    {
+      "id": "S1",
+      "title": "Cross-Tool Handoff",
+      "status": "PARTIAL",
+      "checks": [
+        { "name": "synthetic checkpoint contains completed work", "ok": true },
+        { "name": "synthetic checkpoint contains an open item", "ok": true },
+        { "name": "synthetic checkpoint contains a preserved constraint", "ok": true },
+        { "name": "official baseline commit is merged and pinned", "ok": false }
+      ],
+      "evidence": [
+        "Synthetic checkpoint shape: objective/completed/open-items/preserved-constraints/next-action",
+        "PR #84636 head recorded as experimental reference only"
+      ],
+      "gaps": [
+        "Do not mark official until PR #84636 is merged and a post-merge commit is pinned.",
+        "Runner evaluates OpenClaw-style handoff behavior only; it does not claim protocol conformance."
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "Constraint Preservation",
+      "status": "PARTIAL",
+      "checks": [
+        { "name": "synthetic unsafe latest.md symlink is rejected", "ok": true },
+        { "name": "synthetic unsafe snapshots symlink is rejected", "ok": true },
+        { "name": "reviewed hard-constraint memory API is available", "ok": false }
+      ],
+      "evidence": [
+        "Synthetic filesystem-boundary fixture mirrors the PR #84636 security repair surface"
+      ],
+      "gaps": [
+        "This only covers file-boundary preservation, not a full hard-constraint writeback and review lifecycle."
+      ]
+    }
+  ]
+}

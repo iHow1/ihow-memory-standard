@@ -1,0 +1,48 @@
+{
+  "runtime": "m-flow",
+  "label": "Source trace export/import and model migration probe",
+  "classification": "experimental",
+  "references": [
+    "source-trace export/import runner draft; no upstream endorsement implied"
+  ],
+  "policy": {
+    "public_fixture": true,
+    "uses_synthetic_data": true,
+    "no_official_conformance_claim": true
+  },
+  "scenarios": [
+    {
+      "id": "S5",
+      "title": "Model Migration",
+      "status": "PARTIAL",
+      "checks": [
+        { "name": "project summary survives export/import", "ok": true },
+        { "name": "decision source trace survives export/import", "ok": true },
+        { "name": "constraint source trace survives export/import", "ok": true },
+        { "name": "receiving model budget adaptation is verified", "ok": false }
+      ],
+      "evidence": [
+        "Synthetic source-trace package round-tripped across two model-facing clients"
+      ],
+      "gaps": [
+        "Budget adaptation for a receiving model is not yet exercised."
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "Feedback Pattern Capture",
+      "status": "PARTIAL",
+      "checks": [
+        { "name": "repeated feedback examples survive export/import", "ok": true },
+        { "name": "source trace for feedback survives export/import", "ok": true },
+        { "name": "review queue activation is verified", "ok": false }
+      ],
+      "evidence": [
+        "Synthetic repeated-feedback source trace"
+      ],
+      "gaps": [
+        "The runner checks trace integrity, not reviewed memory activation."
+      ]
+    }
+  ]
+}
