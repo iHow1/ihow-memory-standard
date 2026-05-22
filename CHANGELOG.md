@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2-delta staged
+
+- Added the v0.1 to v0.2 conformance delta draft in `conformance/spec/v0.1-to-v0.2-delta.md`.
+- D1 publish commit: `9c8fda2d300dce7541cb14645c9db12c5c561488`.
+- Added governance rules for RFCs, v0.x to v0.y promotion, and experimental runner promotion.
+- Next milestone: `fixture-runner.mjs` v0.2 enforcement is deferred to v0.3 per the W6 decision; current runner validation remains advisory for the new v0.2 reference-pinning rules.
+
 ## v0.1-draft
 
 - Published the public whitepaper draft.
