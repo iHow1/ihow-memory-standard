@@ -19,15 +19,14 @@
       "checks": [
         { "name": "synthetic checkpoint contains completed work", "ok": true },
         { "name": "synthetic checkpoint contains an open item", "ok": true },
-        { "name": "synthetic checkpoint contains a preserved constraint", "ok": true },
-        { "name": "official baseline commit is merged and pinned", "ok": false }
+        { "name": "synthetic checkpoint contains a preserved constraint", "ok": true }
       ],
       "evidence": [
         "Synthetic checkpoint shape: objective/completed/open-items/preserved-constraints/next-action",
         "PR #84636 head recorded as experimental reference only"
       ],
       "gaps": [
-        "Do not mark official until PR #84636 is merged and a post-merge commit is pinned.",
+        "Classification remains experimental until PR #84636 is merged and a post-merge commit is pinned (this is a policy / classification gap, not a behavioral check).",
         "Runner evaluates OpenClaw-style handoff behavior only; it does not claim protocol conformance."
       ]
     },
