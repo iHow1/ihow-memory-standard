@@ -1,17 +1,19 @@
-# Conformance Specification
+# Conformance
 
-The v0.1 conformance work is a written specification, not a test runner.
+This directory contains the public conformance materials for iHow Memory:
 
-It defines what a compatible memory system should be able to demonstrate:
+- [`evidence/`](./evidence/) — public evidence manifests for benchmark runs, including the LongMemEval_S retrieval-stage result.
+- [`runners/`](./runners/) — experimental synthetic runner scorecards for v0.2 design work.
+- [`spec/`](./spec/) — draft conformance semantics and v0.1 → v0.2 delta notes.
 
-- cross-tool handoff preserves completed work, open blockers, and constraints
-- repeated feedback becomes scoped memory only after enough evidence
-- hard constraints are retrieved before relevant generation or action
-- human onboarding packages separate facts, decisions, assumptions, blockers, and next steps
-- model migration preserves project memory semantics across compatible clients
-- namespace isolation prevents cross-tenant, cross-customer, and unrelated project leakage
-- audit records can explain why a memory item was included or excluded
+## Current evidence
 
-Future versions may include executable test tooling, but v0.1 only publishes the behavioral standard.
+| Evidence | Layer | Result |
+|---|---|---|
+| [`longmemeval-s-2026-05-11.md`](./evidence/longmemeval-s-2026-05-11.md) | Retrieval-stage session-id matching | `recall_all@10 = 1.0` on 470 effective LongMemEval_S samples |
 
-Experimental runner drafts live under [`runners/`](./runners/) for v0.2 design work. They use synthetic fixtures only and should not be treated as v0.1 certification results.
+The LongMemEval_S evidence is not an end-to-end answer-accuracy score and is not a vendor leaderboard. It records whether the retrieval layer returns all required ground-truth evidence sessions in the top-K window.
+
+## Runner status
+
+The runners under [`runners/`](./runners/) are experimental and use synthetic fixtures only. They do not claim official certification for external projects. They emit four-level results (`PASS`, `PARTIAL`, `NOT_APPLICABLE`, `BLOCKED`) to help shape the v0.2 conformance semantics.
