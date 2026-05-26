@@ -1,152 +1,71 @@
-<div align="center">
-
 # iHow Memory
 
-### An open spec draft for durable, auditable memory across AI agents
+**Per-layer conformance for agent memory: open spec, scenario suite, and public evidence.**
 
-[![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](./LICENSE-SPEC)
-[![Status: Draft v0.1](https://img.shields.io/badge/status-draft%20v0.1-yellow.svg)](./docs/release-scope-v0.1.md)
-[![Spec: Draft](https://img.shields.io/badge/spec-draft%20v0.1-brightgreen.svg)](./spec/protocol-draft-v0.1.md)
-[![Feedback: Welcome](https://img.shields.io/badge/feedback-welcome-purple.svg)](https://github.com/iHow1/ihow-memory-standard/issues)
+iHow Memory is for testing whether agent memory survives handoff — across tools, sessions, and people. We focus on the retrieval layer because conformance needs deterministic, reproducible metrics.
 
-[中文](./README.zh-CN.md) · [Whitepaper](./whitepaper/whitepaper-public-v0.1.en.md) · [Protocol](./spec/protocol-draft-v0.1.md) · [Scenarios](./scenarios/reliability-scenarios-v0.1.md) · [Diagrams](./docs/diagrams.md)
+[![Conformance](https://img.shields.io/badge/LongMemEval_S-retrieval_recall_all@10%3D1.0-brightgreen)](./conformance/evidence/longmemeval-s-2026-05-11.md)
+[![Spec](https://img.shields.io/badge/spec-v0.1-blue)](./spec/protocol-draft-v0.1.md)
+[![License](https://img.shields.io/badge/spec-CC--BY-orange)](./LICENSE-SPEC)
 
-</div>
+---
 
-AI agents are powerful inside one chat. Real work is longer than one chat.
+## What it is
 
-iHow Memory defines a local-first memory and handoff reliability layer so agents, tools, and human operators can share durable project context across sessions, models, and handoffs without relying on hidden chat history.
+Three things, one repo:
 
-> v0.1 is an open spec draft seeking RFC-style review. It intentionally publishes specifications, scenarios, diagrams, and documentation only. No implementation code is included.
->
-> v0.1 first published by iHow1, 2026-05.
+1. **Open spec** (`spec/`) — Protocol terms, interfaces, event-context-writeback-audit schema
+2. **Scenario suite** (`scenarios/`) — Five reliability scenarios covering cross-tool handoff, feedback capture, constraint preservation, human team handoff, and model migration
+3. **Conformance evidence** (`conformance/`) — Public benchmark runs, including retrieval-stage LongMemEval_S 470/470
 
-## The Problem in One Picture
+## Why per-layer conformance
 
-```mermaid
-flowchart LR
-  U["Human operator"] --> A["Agent A works"]
-  A --> E["Events: decisions, files, feedback, blockers"]
-  E --> W["Writeback: proposed durable memory"]
-  W --> R["Review: approve, revise, reject"]
-  R --> M["Project memory: scoped and auditable"]
-  M --> C["Context package for the next task"]
-  C --> B["Agent B continues without starting over"]
-  M --> AU["Audit: why was memory used?"]
-```
+Most memory benchmarks today report end-to-end LLM-judged answer accuracy: retrieve evidence, generate an answer, judge it. That conflates two distinct failure modes:
 
-## Why This Matters
+- Memory retrieved the wrong evidence (retrieval failure)
+- Memory retrieved the right evidence but the generator wrote a wrong answer (generation failure)
 
-Most AI work fails at the handoff boundary:
+These have different fix paths. We report retrieval and generation separately.
 
-| Failure | What happens |
-|---|---|
-| Revision amnesia | The same feedback is repeated again and again. |
-| Tool-swap amnesia | Moving from one AI tool to another loses project state. |
-| Handoff amnesia | A new person or agent must reread raw history before becoming useful. |
-| Safety drift | Hard constraints become ordinary suggestions and get ignored. |
+**Retrieval is the layer this repo's evidence speaks to today.** Generation-stage scenarios are part of v0.2 roadmap.
 
-iHow Memory treats memory as shared project infrastructure, not a private feature inside one agent.
+## Latest evidence
 
-## Who Is This For?
-
-- Teams using multiple AI coding or writing tools on long-running projects.
-- AI product builders who need memory semantics beyond chat history.
-- Operations, support, and consulting teams that rely on repeatable handoffs.
-- Researchers and analysts who need durable project state across tools.
-- Organizations that need local-first, auditable AI workflow memory.
-
-## What Makes It Different
-
-- Local-first by default: project memory stays in the operator's chosen environment.
-- Human-readable: durable state is inspectable and reviewable.
-- Model-neutral: memory semantics are not tied to one LLM provider.
-- Multi-agent native: handoff is a first-class reliability target.
-- Auditable: memory has provenance, scope, review status, and lifecycle records.
-- Conformance-oriented: quality is measured by behavior, not by storage technology.
-
-## Comparison With Other Approaches
-
-| Approach | Primary focus | iHow Memory difference |
+| Scenario | Metric | Result |
 |---|---|---|
-| Chat history | Recall inside one product session | Defines durable project memory across sessions and tools. |
-| Vector database / RAG | Retrieve similar text | Adds scope, review status, hard constraints, writeback, and audit. |
-| Agent memory platforms | Personalization or app-level memory | Focuses on multi-agent handoff reliability and conformance. |
-| Manual project docs | Human-maintained notes | Defines protocol semantics for agents to record, retrieve, and audit memory. |
+| LongMemEval_S retrieval (470 effective samples) | `recall_all@10` | **1.0** |
+| LongMemEval_S retrieval | `recall_any@10` | **1.0** |
+| LongMemEval_S retrieval | `ndcg_any@10` | **0.946** |
+| Reference implementation self-conformance | 5 spec scenarios v0.1 | **5/5 PASS** |
 
-## v0.1 Published Materials
+[Reproducible evidence manifest](./conformance/evidence/longmemeval-s-2026-05-11.md)
 
-| Area | File |
-|---|---|
-| Non-technical overview | [`docs/overview-for-non-technical-readers.md`](./docs/overview-for-non-technical-readers.md) |
-| Diagrams | [`docs/diagrams.md`](./docs/diagrams.md) |
-| Whitepaper | [`whitepaper/whitepaper-public-v0.1.en.md`](./whitepaper/whitepaper-public-v0.1.en.md) |
-| Chinese whitepaper | [`whitepaper/whitepaper-public-v0.1.zh-CN.md`](./whitepaper/whitepaper-public-v0.1.zh-CN.md) |
-| Protocol draft | [`spec/protocol-draft-v0.1.md`](./spec/protocol-draft-v0.1.md) |
-| Reliability scenarios | [`scenarios/reliability-scenarios-v0.1.md`](./scenarios/reliability-scenarios-v0.1.md) |
-| Conformance direction | [`conformance/README.md`](./conformance/README.md) |
-| Release scope | [`docs/release-scope-v0.1.md`](./docs/release-scope-v0.1.md) |
-| Security boundary | [`docs/security-boundary.md`](./docs/security-boundary.md) |
+<sub>**Note on vendor comparisons.** Other memory projects publish end-to-end LLM-judged answer accuracy on the same LongMemEval_S split — Mem0 token-efficient algorithm 93.4% ([source](https://mem0.ai/blog/mem0-the-token-efficient-memory-algorithm)), Mastra observational memory 94.87% ([source](https://mastra.ai/research/observational-memory)), OMEGA 95.4% ([source](https://omegamax.co/benchmarks)). Those measure a different layer than the retrieval recall reported here and are not directly comparable to our numbers. We argue memory systems should report per-layer; this evidence file is the retrieval-layer disclosure.</sub>
 
-## Reliability Scenarios
+## Spec is here, reference implementation is in [ihow-memory-core](https://github.com/iHow1/ihow-memory-core)
 
-The v0.1 scenario set defines five acceptance-style tests:
+This repo holds: spec, scenarios, conformance evidence, whitepaper.
+Reference implementation (Apache-2.0): see [ihow-memory-core](https://github.com/iHow1/ihow-memory-core).
 
-1. Cross-Tool Handoff / 跨工具接力
-2. Feedback Pattern Capture / 反馈规律沉淀
-3. Constraint Preservation / 禁忌约束执行
-4. Human Team Handoff / 新人接手
-5. Model Migration / 跨模型迁移
+## Run conformance against your memory system
 
-Each scenario includes Given, When, Then, failure modes, and acceptance criteria.
+If you maintain a memory system (Mem0, Letta, Zep, MemGPT, Cognee, Graphiti, or your own), we'd love you to run a runner against our conformance suite. We score `PARTIAL` and `NOT_APPLICABLE` friendly — not pass-or-fail.
 
-## Protocol Draft
+See `conformance/runners/README.md`.
 
-The protocol draft defines four core interfaces:
+## Roadmap
 
-- `events`: workflow event ingestion
-- `context`: bounded context package retrieval
-- `writeback`: proposed durable memory and review
-- `audit`: traceability and lifecycle control
+- **v0.1** — Live. Five scenarios + protocol draft + retrieval-stage LongMemEval_S evidence.
+- **v0.2** — Scoped. Generation-stage scenarios, calibration memory, multi-runner conformance.
+- **External runners** — Currently `PARTIAL` for OpenViking / GBrain / M-Flow. PRs welcome.
 
-It also defines isolation boundaries for tenant, customer, project, and user scopes.
+## Community
 
-## Validation Direction
+- 🌐 Site: [ihowmemory.com](https://ihowmemory.com)
+- 📕 Whitepaper: [EN](./whitepaper/whitepaper-public-v0.1.en.md) · [中文](./whitepaper/whitepaper-public-v0.1.zh-CN.md)
+- 💬 Discussions: [GitHub Discussions](../../discussions)
+- 📧 Contact: repo issues / discussions
 
-The public v0.1 repository publishes a reliability language first: reviewable scenarios, protocol semantics, isolation boundaries, and conformance direction. It does not publish benchmark results or executable conformance tooling. Future versions may consider executable checks after the spec boundary is stable.
+---
 
-## What Is Not Included in v0.1
-
-This repository intentionally does not include:
-
-- tool integration code
-- SDKs
-- runtime services
-- hosted service code
-- deployment recipes
-- private operations
-- customer-specific materials
-- generated benchmark data
-
-The first public release is deliberately narrow: define the reliability language before publishing implementation details.
-
-## License
-
-- Specification and scenario materials are licensed under CC BY 4.0. See [`LICENSE-SPEC`](./LICENSE-SPEC).
-- Whitepaper and documentation materials are licensed under CC BY 4.0. See [`LICENSE-DOCS`](./LICENSE-DOCS).
-- The iHow Memory name and marks are not licensed for unrestricted brand use. See [`TRADEMARK.md`](./TRADEMARK.md).
-
-Future code releases, if any, may use a separate software license. No software license is granted by this v0.1 repository.
-
-## Get Involved
-
-Help shape the spec draft:
-
-- Open an issue for ambiguous terminology, missing failure modes, or security boundary concerns.
-- Suggest additional reliability scenarios.
-- Review the conformance direction and propose behavior-level checks.
-- Share implementation feedback without publishing private code or customer materials.
-
-## Status
-
-v0.1 draft for review.
+*Built by a small team focused on multi-agent reliability. Open by default. Conformance over claims.*

@@ -1,17 +1,19 @@
-# 一致性测试规格方向
+# 一致性测试 / Conformance
 
-v0.1 的 conformance 工作是文字规格，不是可执行 test runner。
+本目录保存 iHow Memory 的公开 conformance 材料：
 
-它定义一个兼容的记忆系统应该能证明什么：
+- [`evidence/`](./evidence/) — 公开 benchmark evidence manifest，包括 LongMemEval_S retrieval-stage 结果。
+- [`runners/`](./runners/) — v0.2 设计用的实验性合成 runner scorecard。
+- [`spec/`](./spec/) — conformance 语义草案与 v0.1 → v0.2 delta。
 
-- 跨工具接力能保留已完成工作、未解决阻塞和关键约束
-- 重复反馈只有在证据足够时才沉淀成有范围的记忆
-- 硬约束会在相关生成或行动前被读取
-- 新人接手上下文包能区分事实、决策、假设、阻塞和下一步
-- 跨模型迁移能保持项目记忆语义稳定
-- 命名空间隔离能防止跨 tenant、跨 customer、跨无关项目泄漏
-- 审计记录能解释一条记忆为什么被纳入或排除
+## 当前 evidence
 
-未来版本可以加入可执行测试工具，但 v0.1 只发布行为标准。
+| Evidence | Layer | Result |
+|---|---|---|
+| [`longmemeval-s-2026-05-11.md`](./evidence/longmemeval-s-2026-05-11.md) | Retrieval-stage session-id matching | 470 个 LongMemEval_S 有效样本上 `recall_all@10 = 1.0` |
 
-实验性 runner 草稿放在 [`runners/`](./runners/) 下，用于 v0.2 设计工作。它们只使用合成 fixture，不应被解读为 v0.1 认证结果。
+LongMemEval_S evidence 不是端到端答案准确率，也不是 vendor leaderboard。它记录的是 retrieval 层是否能把所有 ground-truth evidence sessions 放进 top-K 窗口。
+
+## Runner 状态
+
+[`runners/`](./runners/) 下的 runner 是实验性的，只使用 synthetic fixtures，不代表外部项目的正式认证。它们输出四级结果（`PASS`、`PARTIAL`、`NOT_APPLICABLE`、`BLOCKED`），用于推进 v0.2 conformance 语义设计。
