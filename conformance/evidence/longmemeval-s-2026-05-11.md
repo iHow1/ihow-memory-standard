@@ -1,15 +1,13 @@
 # LongMemEval_S Retrieval-Stage Evidence — 2026-05-11
 
-> v3.1 final · 2026-05-27 · supersedes v3 final
-> Target path in spec repo: `conformance/evidence/longmemeval-s-2026-05-11.md`
-> Applied OpenClaw second + third-round review (2026-05-26 / 2026-05-27): @5 numbers full-precision, benchmark-only keywords abstracted, portable principles reframed
-> Status: ready for spec-repo insertion before launch
+> Public evidence manifest · 2026-05-27
+> Records the canonical LongMemEval_S retrieval-stage run completed on 2026-05-11.
 
 ---
 
 ## Summary
 
-This document records a reproducible retrieval-stage benchmark run of iHow Memory's reference implementation against the LongMemEval_S split.
+This document records a retrieval-stage benchmark run of iHow Memory Core against the LongMemEval_S split.
 
 | Metric | Value |
 |---|---|
@@ -120,7 +118,7 @@ In the meantime, this manifest itself is the public reference: the canonical art
 ## What this evidence supports — and what it doesn't
 
 **Supports**:
-- iHow Memory's reference implementation can retrieve all ground-truth evidence sessions in top-10 for every LongMemEval_S sample
+- iHow Memory Core can retrieve all ground-truth evidence sessions in top-10 for every LongMemEval_S sample
 - The retrieval-stage scenario can be the subject of conformance testing using a deterministic metric
 
 **Does not support**:
